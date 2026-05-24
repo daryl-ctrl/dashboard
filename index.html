@@ -1,47 +1,64 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>SupplementSource Mission Control</title>
 
-<meta charset="UTF-8">
-<meta http-equiv="refresh" content="30; URL=https://admin.shopify.com/store/supplementsource/analytics">
+<title>SupplementSource Mission Control</title>
 
 <style>
 body{
     margin:0;
     background:black;
     color:white;
-    font-family:Arial;
     display:flex;
     justify-content:center;
     align-items:center;
     height:100vh;
-    flex-direction:column;
-}
-
-h1{
-    font-size:48px;
-    margin-bottom:20px;
-}
-
-p{
-    font-size:24px;
-    opacity:0.7;
+    font-family:Arial;
+    font-size:40px;
 }
 </style>
+
+<script>
+
+const pages = [
+
+"https://admin.shopify.com/store/supplementsource",
+
+"https://admin.shopify.com/store/supplementsource/analytics",
+
+"https://finance.yahoo.com/portfolios"
+
+];
+
+let current = localStorage.getItem("pageIndex");
+
+if(current === null){
+    current = 0;
+}else{
+    current = parseInt(current);
+}
+
+const nextPage = pages[current];
+
+current++;
+
+if(current >= pages.length){
+    current = 0;
+}
+
+localStorage.setItem("pageIndex", current);
+
+setTimeout(() => {
+    window.location.href = nextPage;
+}, 3000);
+
+</script>
 
 </head>
 
 <body>
 
-<h1>SHOPIFY ADMIN</h1>
-<p>Loading Dashboard...</p>
-
-<script>
-setTimeout(function(){
-window.location.href = "https://admin.shopify.com/store/supplementsource";
-}, 3000);
-</script>
+Loading Mission Control...
 
 </body>
 </html>
